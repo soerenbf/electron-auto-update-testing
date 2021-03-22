@@ -15,6 +15,24 @@ import { app, BrowserWindow, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+import { version } from '../package.json';
+
+const server = 'https://update.electronjs.org';
+const feed = `${server}/electron/update-server/${process.platform}/${version}`;
+autoUpdater.setFeedURL(feed);
+autoUpdater.checkForUpdates();
+
+autoUpdater.on('checking-for-update', () => {
+  console.log('checking-for-update');
+});
+
+autoUpdater.on('update-available', () => {
+  console.log('update-available');
+});
+
+autoUpdater.on('update-not-available', () => {
+  console.log('update-not-available');
+});
 
 export default class AppUpdater {
   constructor() {
@@ -108,7 +126,7 @@ const createWindow = async () => {
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
-  new AppUpdater();
+  // new AppUpdater();
 };
 
 /**
