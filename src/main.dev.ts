@@ -18,9 +18,9 @@ import MenuBuilder from './menu';
 import { version } from '../package.json';
 
 const server = 'https://update.electronjs.org';
-const feed = `${server}/electron/update-server/${process.platform}/${version}`;
+const feed = `${server}/orhoj/electron-auto-update-testing/${process.platform}/${version}`;
 autoUpdater.setFeedURL(feed);
-autoUpdater.checkForUpdates();
+autoUpdater.checkForUpdatesAndNotify();
 
 autoUpdater.on('checking-for-update', () => {
   console.log('checking-for-update');
