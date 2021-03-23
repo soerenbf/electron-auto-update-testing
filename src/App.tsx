@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import icon from '../assets/icon.svg';
 import './App.global.css';
+import { version } from './package.json';
 
 const Hello = () => {
   return (
@@ -9,7 +10,7 @@ const Hello = () => {
       <div className="Hello">
         <img width="200px" alt="icon" src={icon} />
       </div>
-      <h1>electron-react-boilerplate</h1>
+      <h1>Auto update testing v:{version}</h1>
       <div className="Hello">
         <a
           href="https://electron-react-boilerplate.js.org/"
@@ -20,7 +21,7 @@ const Hello = () => {
             <span role="img" aria-label="books">
               📚
             </span>
-            This is a newer version
+            This text has been updated since the last version.
           </button>
         </a>
         <a

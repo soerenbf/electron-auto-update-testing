@@ -13,13 +13,17 @@ import 'regenerator-runtime/runtime';
 import path from 'path';
 import { app, BrowserWindow, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
-import log from 'electron-log';
 import MenuBuilder from './menu';
-import { version } from '../package.json';
+import { version } from './package.json';
 
 const server = 'https://update.electronjs.org';
-const feed = `${server}/orhoj/electron-auto-update-testing/${process.platform}/${version}`;
-autoUpdater.setFeedURL(feed);
+const feed = `${server}/orhoj/electron-auto-update-testing/win32-x64/${version}/`;
+autoUpdater.setFeedURL({
+  url: feed,
+  provider: 'github',
+  owner: 'orhoj',
+  repo: 'electron-auto-update-testing',
+});
 autoUpdater.checkForUpdatesAndNotify();
 
 autoUpdater.on('checking-for-update', () => {
@@ -36,8 +40,6 @@ autoUpdater.on('update-not-available', () => {
 
 export default class AppUpdater {
   constructor() {
-    log.transports.file.level = 'info';
-    autoUpdater.logger = log;
     autoUpdater.checkForUpdatesAndNotify();
   }
 }
