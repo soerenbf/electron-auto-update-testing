@@ -17,11 +17,11 @@ import MenuBuilder from './menu';
 import { version } from './package.json';
 
 const server = 'https://update.electronjs.org';
-const feed = `${server}/orhoj/electron-auto-update-testing/win32-x64/${version}/`;
+const feed = `${server}/soerenbf/electron-auto-update-testing/darwin-x64/${version}/`;
 autoUpdater.setFeedURL({
   url: feed,
   provider: 'github',
-  owner: 'orhoj',
+  owner: 'soerenbf',
   repo: 'electron-auto-update-testing',
 });
 autoUpdater.checkForUpdatesAndNotify();
